@@ -1,0 +1,15 @@
+HOLA COMO ESSSTAS
+Esta es la linea 2.
+Estas cogiendo la linea 3, y solo quedaría una linea mas para llegar al final del archivo.
+4
+
+int		main(void)
+{
+	int fd;
+	char **lines;
+
+	lines = malloc(999);
+	fd = open("/Users/macbookpro/Desktop/42/get_next_line/prueba.txt", O_RDONLY);
+	get_next_line(fd, lines);
+	printf("%s", lines[fd]);
+}
