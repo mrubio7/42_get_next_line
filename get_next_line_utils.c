@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:52:18 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/20 18:35:38 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/08/24 19:17:48 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char			*ft_strjoin(char *s1, char const *s2)
 	{
 		s1 = malloc(1);
 		s1[0] = '\0';
-	}	
+	}
 	total = ft_strlen(s1) + ft_strlen(s2);
 	if ((res = (char *)malloc(total + 1)) == NULL)
 		return (NULL);
@@ -90,6 +90,7 @@ void			*ft_memcpy(void *dest, const void *src, unsigned int n)
 	char		*s;
 	char		*d;
 
+	
 	if (!dest && !src)
 		return (NULL);
 	s = (char *)src;
@@ -102,3 +103,25 @@ void			*ft_memcpy(void *dest, const void *src, unsigned int n)
 	}
 	return (dest);
 }
+
+void			ft_bzero(void *s, unsigned int n)
+{
+	char *f;
+
+	f = s;
+	while (n)
+	{
+		*f = 0;
+		f++;
+		n--;
+	}
+}
+
+void			ft_freeall(char *a, char *b)
+{
+	if (a)
+		free(a);
+	if (b)
+		free(b);
+}
+
