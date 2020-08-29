@@ -6,13 +6,13 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:52:18 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/24 19:17:48 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/08/28 20:09:43 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char			*ft_strjoin(char *s1, char const *s2)
+char			*ft_strjoin(char *s1, char *s2)
 {
 	char	*res;
 	int		total;
@@ -21,13 +21,8 @@ char			*ft_strjoin(char *s1, char const *s2)
 
 	z = 0;
 	x = 0;
-	if (!s1 && !s2)
+	if (!s1 || !s2)
 		return (NULL);
-	if (!s1)
-	{
-		s1 = malloc(1);
-		s1[0] = '\0';
-	}
 	total = ft_strlen(s1) + ft_strlen(s2);
 	if ((res = (char *)malloc(total + 1)) == NULL)
 		return (NULL);
@@ -45,25 +40,13 @@ char			*ft_strjoin(char *s1, char const *s2)
 	return (res);
 }
 
-int				ft_strchr_num(char *s, int c)
-{
-	int x;
-
-	x = 0;
-	while (s[x] != '\0')
-	{
-		if (s[x] == c)
-			return (x);
-		x++;
-	}
-	return (-1);
-}
-
-char			*ft_strldup(const char *src, int x)
+char			*ft_strdup(const char *src)
 {
 	char	*s;
+	int		x;
 
-	if ((s = malloc(x + 1)) == NULL)
+	x = ft_strlen(src) + 1;
+	if ((s = malloc(x)) == NULL)
 		return (NULL);
 	if (src == NULL)
 	{
@@ -71,7 +54,6 @@ char			*ft_strldup(const char *src, int x)
 		return (NULL);
 	}
 	ft_memcpy(s, src, x);
-	s[x] = '\0';
 	return (s);
 }
 
@@ -117,11 +99,43 @@ void			ft_bzero(void *s, unsigned int n)
 	}
 }
 
-void			ft_freeall(char *a, char *b)
+unsigned int	ft_strlcat(char *dest, const char *src, unsigned int size)
 {
-	if (a)
-		free(a);
-	if (b)
-		free(b);
+	int x;
+	int z;
+
+	x = 0;
+	z = 0;
+	while ((dest[x]) && (x < (int)size))
+		x++;
+	while ((src[z]) && (x + z + 1) < (int)size)
+	{
+		dest[x + z] = src[z];
+		z++;
+	}
+	if (x < (int)size)
+		dest[x + z] = '\0';
+	return (x + ft_strlen(src));
+}
+
+unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
+{
+	unsigned int x;
+
+	x = 0;
+	if (!dest || !src)
+		return (0);
+	if (size != 0)
+	{
+		while ((src[x] != '\0') && (x < size - 1))
+		{
+			dest[x] = src[x];
+			x++;
+		}
+		dest[x] = '\0';
+	}
+	while (src[x] != '\0')
+		x++;
+	return (x);
 }
 
