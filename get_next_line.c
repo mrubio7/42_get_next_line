@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/31 11:46:57 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/08/31 12:17:17 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				get_next_line(int fd, char **line)
 	{
 		if (!str[fd])
 			str[fd] = ft_strdup("");
-		newstr[r] = '\0';
+		newstr[BUFFER_SIZE] = '\0';
 		str[fd] = ft_strjoin(str[fd], newstr);
 		free(newstr);
 		newstr = malloc(BUFFER_SIZE + 1);
@@ -104,4 +104,5 @@ int		main(void)
 	{
 		printf("%s\n", lines[fd-3]);
 	}
+	printf("%s\n", lines[fd-3]);
 }
