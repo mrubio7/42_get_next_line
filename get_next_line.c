@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/29 17:15:42 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/08/31 11:46:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		ft_movestr(char **str, int x, char **line)
 {
 	char	*temp;
 
-	*str[x] = '\0';
+	(* str)[x] = '\0';
 	*line = ft_strdup(*str);
 	temp = ft_strdup(*str + x + 1);
 	ft_freemem(*str);
@@ -80,7 +80,7 @@ int				get_next_line(int fd, char **line)
 		str[fd] = ft_strjoin(str[fd], newstr);
 		free(newstr);
 		newstr = malloc(BUFFER_SIZE + 1);
-		if ((x = find_n(str[fd]) > -1))
+		if ((x = find_n(str[fd])) > -1)
 		{
 			ft_freemem(newstr);
 			return(ft_movestr(&str[fd], x, line));
@@ -99,7 +99,7 @@ int		main(void)
 	int a;
 
 	lines = malloc(999);
-	fd = open("/Users/macbookpro/Desktop/42/get_next_line/prueba.txt", O_RDONLY);
+	fd = open("/Users/mrubio/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
 	while ((a = get_next_line(fd, lines)) > 0)
 	{
 		printf("%s\n", lines[fd-3]);
