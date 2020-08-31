@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:52:18 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/28 20:09:43 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/08/29 17:11:18 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,57 +85,3 @@ void			*ft_memcpy(void *dest, const void *src, unsigned int n)
 	}
 	return (dest);
 }
-
-void			ft_bzero(void *s, unsigned int n)
-{
-	char *f;
-
-	f = s;
-	while (n)
-	{
-		*f = 0;
-		f++;
-		n--;
-	}
-}
-
-unsigned int	ft_strlcat(char *dest, const char *src, unsigned int size)
-{
-	int x;
-	int z;
-
-	x = 0;
-	z = 0;
-	while ((dest[x]) && (x < (int)size))
-		x++;
-	while ((src[z]) && (x + z + 1) < (int)size)
-	{
-		dest[x + z] = src[z];
-		z++;
-	}
-	if (x < (int)size)
-		dest[x + z] = '\0';
-	return (x + ft_strlen(src));
-}
-
-unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
-{
-	unsigned int x;
-
-	x = 0;
-	if (!dest || !src)
-		return (0);
-	if (size != 0)
-	{
-		while ((src[x] != '\0') && (x < size - 1))
-		{
-			dest[x] = src[x];
-			x++;
-		}
-		dest[x] = '\0';
-	}
-	while (src[x] != '\0')
-		x++;
-	return (x);
-}
-
