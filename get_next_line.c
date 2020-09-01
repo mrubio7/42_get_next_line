@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/31 12:17:17 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/01 11:55:44 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,12 @@ int				get_next_line(int fd, char **line)
 		return (-1);
 	if (!(newstr = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while ((r = read(fd, newstr, BUFFER_SIZE) > 0))
+	while ((r = read(fd, newstr, BUFFER_SIZE)) > 0)
 	{
 		if (!str[fd])
 			str[fd] = ft_strdup("");
-		newstr[BUFFER_SIZE] = '\0';
+		newstr[r] = '\0';
 		str[fd] = ft_strjoin(str[fd], newstr);
-		free(newstr);
-		newstr = malloc(BUFFER_SIZE + 1);
 		if ((x = find_n(str[fd])) > -1)
 		{
 			ft_freemem(newstr);
@@ -90,19 +88,4 @@ int				get_next_line(int fd, char **line)
 	if (r == -1)
 		return (-1);
 	return (find_EOF(&str[fd], line));
-}
-
-int		main(void)
-{
-	int fd;
-	char **lines;
-	int a;
-
-	lines = malloc(999);
-	fd = open("/Users/mrubio/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
-	while ((a = get_next_line(fd, lines)) > 0)
-	{
-		printf("%s\n", lines[fd-3]);
-	}
-	printf("%s\n", lines[fd-3]);
 }

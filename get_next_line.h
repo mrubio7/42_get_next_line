@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:03:10 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/29 13:15:53 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/01 10:11:21 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ char			*ft_strdup(const char *src);
 char			*ft_strjoin(char *s1, char *s2);
 size_t			ft_strlen(const char *str);
 void			*ft_memcpy(void *dest, const void *src, unsigned int n);
-unsigned int	ft_strlcat(char *dest, const char *src, unsigned int size);
-unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size);
-void			ft_bzero(void *s, unsigned int n);
 
 
 # ifndef BUFFER_SIZE
