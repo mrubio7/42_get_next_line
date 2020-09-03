@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/03 10:08:24 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/03 11:47:27 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int		ft_movestr(char **str, int x, char **line)
 {
 	char	*temp;
 
-	(* str)[x] = '\0';
 	*line = ft_strdup(*str);
 	temp = ft_strdup(*str + x + 1);
 	ft_freemem(*str);
@@ -47,10 +46,6 @@ static int		ft_movestr(char **str, int x, char **line)
 
 static int		find_EOF(char **str, char **line)
 {
-	int		stp;
-
-	if (*str && (stp = find_n(*str)) > 0)
-		return (ft_movestr(str, stp, line));
 	if (*str)
 	{
 		*line = *str;
@@ -97,7 +92,7 @@ int		main(void)
 	int a;
 
 	lines = malloc(999);
-	fd = open("/Users/mrubio/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
+	fd = open("/Users/mrubio/Desktop/42/42_get_next_line/64bit_line.txt", O_RDONLY);
 	while ((a = get_next_line(fd, lines)) > -1)
 	{
 		printf("%s\n", lines[fd-3]);
