@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:52:18 by mrubio            #+#    #+#             */
-/*   Updated: 2020/08/29 17:11:18 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/03 13:06:08 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ char			*ft_strjoin(char *s1, char *s2)
 
 	z = 0;
 	x = 0;
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
+	else if (!s1)
+		return(ft_strdup(s2));
+	else if (!s2)
+		return(ft_strdup(s1));
 	total = ft_strlen(s1) + ft_strlen(s2);
 	if ((res = (char *)malloc(total + 1)) == NULL)
 		return (NULL);
@@ -45,15 +49,13 @@ char			*ft_strdup(const char *src)
 	char	*s;
 	int		x;
 
-	x = ft_strlen(src) + 1;
-	if ((s = malloc(x)) == NULL)
-		return (NULL);
 	if (src == NULL)
-	{
-		free(s);
 		return (NULL);
-	}
+	x = ft_strlen(src);
+	if ((s = malloc(x + 1)) == NULL)
+		return (NULL);
 	ft_memcpy(s, src, x);
+	s[x] = '\0';
 	return (s);
 }
 
