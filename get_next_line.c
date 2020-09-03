@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/01 11:55:44 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/03 10:08:24 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				get_next_line(int fd, char **line)
 	int				x;
 	int				r;
 
-	if (fd < 0 || fd > 256 || !line || BUFFER_SIZE <= 0)
+	if (fd < 3 || fd > 256 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(newstr = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
@@ -85,7 +85,21 @@ int				get_next_line(int fd, char **line)
 		}
 	}
 	ft_freemem(newstr);
-	if (r == -1)
-		return (-1);
-	return (find_EOF(&str[fd], line));
+	if (r == 0 && str[fd])
+		return (find_EOF(&str[fd], line));
+	return (-1);
+}
+
+int		main(void)
+{
+	int fd;
+	char **lines;
+	int a;
+
+	lines = malloc(999);
+	fd = open("/Users/mrubio/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
+	while ((a = get_next_line(fd, lines)) > -1)
+	{
+		printf("%s\n", lines[fd-3]);
+	}
 }
