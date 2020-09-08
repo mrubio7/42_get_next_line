@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/03 13:21:57 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/08 09:30:49 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static int		ft_movestr(char **str, int x, char **line)
 		ft_freemem(*str);
 		*str = temp;
 	}
-	else
-		ft_freemem(*str);
 	return (1);
 }
 
@@ -99,9 +97,10 @@ int				get_next_line(int fd, char **line)
 	else if (r < 0)
 		return (-1);
 	*line = ft_strdup("");
+	free(newstr);
 	return (0);
 }
-
+/*
 int		main(void)
 {
 	int fd;
@@ -117,3 +116,4 @@ int		main(void)
 	}
 	free(lines);
 }
+*/
