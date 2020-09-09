@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:52:18 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/03 13:06:08 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/08 11:21:03 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,17 @@ void			*ft_memcpy(void *dest, const void *src, unsigned int n)
 		s++;
 	}
 	return (dest);
+}
+
+void	ft_bzero(void *s, unsigned int n)
+{
+	char *f;
+
+	f = s;
+	while (n)
+	{
+		*f = 0;
+		f++;
+		n--;
+	}
 }
