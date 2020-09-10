@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/09 10:29:06 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/10 11:52:28 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ static int		ft_find_n(char *str)
 	return (-1);
 }
 
-static int		ft_movestr(char **str, int x, char **line)
+static int		ft_movestr(char **str, int x, char **line, char *newstr)
 {
 	char	*temp;
 
 	(*str)[x] = '\0';
 	*line = ft_strdup(*str);
+	free(newstr);
 	if (ft_strlen(*str + x + 1) > 0)
 	{
 		temp = ft_strdup(*str + x + 1);
@@ -40,7 +41,9 @@ static int		ft_movestr(char **str, int x, char **line)
 		*str = temp;
 	}
 	else
+	{
 		ft_bzero(*str, ft_strlen(*str));
+	}
 	return (1);
 }
 
@@ -49,7 +52,7 @@ static int		ft_find_EOF(char **str, char **line)
 	int		find;
 	
 	if (*str && (find = ft_find_n(*str)) > -1)
-		return(ft_movestr(str, find, line));
+		return(ft_movestr(str, find, line, NULL));
 	else
 		*line = *str;
 		free(*str);
@@ -73,7 +76,8 @@ int				get_next_line(int fd, char **line)
 	int				x;
 	int				r;
 
-	if (fd < 0 || fd > 256 || !line || BUFFER_SIZE <= 0 || !(newstr = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	if (fd < 0 || fd > 256 || !line || BUFFER_SIZE <= 0
+	|| !(newstr = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	while ((r = read(fd, newstr, BUFFER_SIZE)) > 0)
 	{
@@ -83,8 +87,9 @@ int				get_next_line(int fd, char **line)
 		else
 			ft_addstr(&str[fd], newstr);
 		if ((x = ft_find_n(str[fd])) > -1)
-			return(ft_movestr(&str[fd], x, line));
+			return(ft_movestr(&str[fd], x, line, newstr));
 	}
+	free(newstr);
 	if (r < 0)
 		return (-1);
 	if (r == 0 && str[fd])
@@ -107,8 +112,8 @@ int		main(void)
 	{
 		printf("%i -- %s\n",i, lines[fd-3]);
 		printf("...................\n");
+		free(lines[fd-3]);
 		i++;
 	}
-	free(lines);
 }
 */
