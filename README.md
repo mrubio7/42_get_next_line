@@ -8,3 +8,7 @@ Debería funcionar correctamente cuando lee desde un archivo y cuando lee desde 
 
 El programa debe compilarse con el "flag **-D BUFFER_SIZE=xx**". Siendo "xx" un numero que será usado como tamaño de buffer para ir leyendo en get_next_line y la funcion "read()"
 debe usar BUFFER_SIZE para leer desde un archivo o desde "stdin".
+
+**Para la parte bonus:**
+
+Debe hacerse con una unica variable estatica y debe poder abrir varios descriptores de archivos y sacar las lineas de texto de cada uno que se le pida sin perderse.
