@@ -6,12 +6,11 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/10 11:52:28 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/15 00:46:56 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 static int		ft_find_n(char *str)
 {
@@ -43,21 +42,24 @@ static int		ft_movestr(char **str, int x, char **line, char *newstr)
 	else
 	{
 		ft_bzero(*str, ft_strlen(*str));
+		free(*str);
 	}
 	return (1);
 }
 
-static int		ft_find_EOF(char **str, char **line)
+static int		ft_find_eof(char **str, char **line)
 {
 	int		find;
-	
+
 	if (*str && (find = ft_find_n(*str)) > -1)
-		return(ft_movestr(str, find, line, NULL));
+		return (ft_movestr(str, find, line, NULL));
 	else
+	{
 		*line = *str;
 		free(*str);
 		*str = NULL;
-	return (0);
+	}
+	return (1);
 }
 
 static void		ft_addstr(char **str, char *newstr)
@@ -87,17 +89,16 @@ int				get_next_line(int fd, char **line)
 		else
 			ft_addstr(&str[fd], newstr);
 		if ((x = ft_find_n(str[fd])) > -1)
-			return(ft_movestr(&str[fd], x, line, newstr));
+			return (ft_movestr(&str[fd], x, line, newstr));
 	}
-	free(newstr);
 	if (r < 0)
 		return (-1);
 	if (r == 0 && str[fd])
-		return (ft_find_EOF(&str[fd], line));
+		return (ft_find_eof(&str[fd], line));
 	*line = ft_strdup("");
 	return (0);
 }
-/*
+
 int		main(void)
 {
 	int fd;
@@ -107,13 +108,10 @@ int		main(void)
 
 	i = 0;
 	lines = malloc(999);
-	fd = open("/Users/mrubio/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
+	fd = open("/Users/macbookpro/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
 	while ((a = get_next_line(fd, lines)) > 0)
 	{
 		printf("%i -- %s\n",i, lines[fd-3]);
-		printf("...................\n");
-		free(lines[fd-3]);
 		i++;
 	}
 }
-*/

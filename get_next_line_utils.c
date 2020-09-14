@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:52:18 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/10 10:05:02 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/11 19:37:45 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void			*ft_memcpy(void *dest, const void *src, unsigned int n)
 	char		*s;
 	char		*d;
 
-	
 	if (!dest && !src)
 		return (NULL);
 	s = (char *)src;
