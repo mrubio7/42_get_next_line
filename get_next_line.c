@@ -6,7 +6,15 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/09/15 14:47:57 by mrubio           ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2020/09/15 13:37:57 by mrubio           ###   ########.fr       */
+=======
+/*   Updated: 2020/09/15 14:24:09 by mrubio           ###   ########.fr       */
+>>>>>>> ddf902783f1662724e5ea1960aae1e562247fe7b
+>>>>>>> a0626a08864c3e7d83005ccf2e3678bd140f54c1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +49,10 @@ static int		ft_movestr(char **str, int x, char **line, char *newstr)
 	}
 	else
 		ft_bzero(*str, ft_strlen(*str));
+<<<<<<< HEAD
+	}
+=======
+>>>>>>> ddf902783f1662724e5ea1960aae1e562247fe7b
 	return (1);
 }
 
@@ -108,8 +120,9 @@ int		main(void)
 	fd = open("/Users/macbookpro/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
 	while ((a = get_next_line(fd, lines)) > 0)
 	{
-		printf("%i -- %s\n",i, lines[fd-3]);
+		printf("Linea %i ---- %s\n",i, lines[fd-3]);
 		i++;
 	}
+	printf("Linea %i ---- %s\n",i, lines[fd-3]);
 }
 */
