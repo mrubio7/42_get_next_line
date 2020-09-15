@@ -6,7 +6,11 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/09/15 13:37:57 by mrubio           ###   ########.fr       */
+=======
+/*   Updated: 2020/09/15 14:24:09 by mrubio           ###   ########.fr       */
+>>>>>>> ddf902783f1662724e5ea1960aae1e562247fe7b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +44,11 @@ static int		ft_movestr(char **str, int x, char **line, char *newstr)
 		*str = temp;
 	}
 	else
-	{
 		ft_bzero(*str, ft_strlen(*str));
+<<<<<<< HEAD
 	}
+=======
+>>>>>>> ddf902783f1662724e5ea1960aae1e562247fe7b
 	return (1);
 }
 
@@ -97,7 +103,7 @@ int				get_next_line(int fd, char **line)
 	*line = ft_strdup("");
 	return (0);
 }
-
+/*
 int		main(void)
 {
 	int fd;
@@ -115,3 +121,4 @@ int		main(void)
 	}
 	printf("Linea %i ---- %s\n",i, lines[fd-3]);
 }
+*/
