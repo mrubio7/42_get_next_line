@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/15 00:46:56 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/15 13:37:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int		ft_movestr(char **str, int x, char **line, char *newstr)
 	else
 	{
 		ft_bzero(*str, ft_strlen(*str));
-		free(*str);
 	}
 	return (1);
 }
@@ -59,7 +58,7 @@ static int		ft_find_eof(char **str, char **line)
 		free(*str);
 		*str = NULL;
 	}
-	return (1);
+	return (0);
 }
 
 static void		ft_addstr(char **str, char *newstr)
@@ -111,7 +110,8 @@ int		main(void)
 	fd = open("/Users/macbookpro/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
 	while ((a = get_next_line(fd, lines)) > 0)
 	{
-		printf("%i -- %s\n",i, lines[fd-3]);
+		printf("Linea %i ---- %s\n",i, lines[fd-3]);
 		i++;
 	}
+	printf("Linea %i ---- %s\n",i, lines[fd-3]);
 }
