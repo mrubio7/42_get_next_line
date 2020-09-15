@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/15 14:24:09 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/15 14:47:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static int		ft_find_eof(char **str, char **line)
 	else
 	{
 		*line = *str;
-		free(*str);
 		*str = NULL;
 	}
 	return (0);
@@ -88,6 +87,7 @@ int				get_next_line(int fd, char **line)
 		if ((x = ft_find_n(str[fd])) > -1)
 			return (ft_movestr(&str[fd], x, line, newstr));
 	}
+	free(newstr);
 	if (r < 0)
 		return (-1);
 	if (r == 0 && str[fd])
