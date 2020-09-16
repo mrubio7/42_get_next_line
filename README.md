@@ -1,5 +1,7 @@
 42Madrid Cursus - get_next_line
 
+![gnl](./114:100.png)
+
 ## Uso
 
 Llamar a su función get_next_line en bucle le permitirá leer linea a linea todo el texto de un descriptor de archivo hasta el EOF.
