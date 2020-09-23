@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2020/09/15 23:54:02 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/09/23 20:23:04 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,22 @@ int				get_next_line(int fd, char **line)
 	*line = ft_strdup("");
 	return (0);
 }
+/*
+int     main(void)
+{
+    int fd;
+    char **lines;
+    int a;
+    int i;
+
+    i = 0;
+    lines = malloc(999);
+    fd = open("/Users/macbookpro/Desktop/42/42_get_next_line/prueba.txt", O_RDONLY);
+    while ((a = get_next_line(fd, lines)) > 0)
+    {
+        printf("Linea %i ---- %s\n",i, lines[fd-3]);
+        i++;
+    }
+    printf("Linea %i ---- %s\n",i, lines[fd-3]);
+}
+*/
