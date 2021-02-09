@@ -1,16 +1,17 @@
-42Madrid Cursus - get_next_line
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/mrubio/42cursus-get_next_line)](https://github.com/JaeSeoKim/badge42)
 
-![gnl](./114:100.png)
+## Objetive
 
-## Uso
+Create a function that can read an entire file, line by line.
 
-Llamar a su función get_next_line en bucle le permitirá leer linea a linea todo el texto de un descriptor de archivo hasta el EOF.
+## Use
 
-Debería funcionar correctamente cuando lee desde un archivo y cuando lee desde la entrada estándar.
+Calling function "get_next_line" in a loop, will allow you read an entire file until EOF ('\0').
 
-El programa debe compilarse con el flag "**-D BUFFER_SIZE=xx**". Siendo "xx" un numero que será usado como tamaño de buffer para ir leyendo en get_next_line y la funcion "read()"
-debe usar BUFFER_SIZE para leer desde un archivo o desde "stdin".
+Should works correctly if read from file or stdin.
 
-**Para la parte bonus:**
+The progran should be compile with flag `-D BUFFEE_SIZE=XX**` Being "XX" a number used as buffer size to read each loop. As default  `BUFFER_SIZE=32`
 
-Debe hacerse con una unica variable estatica y debe poder abrir varios descriptores de archivos y sacar las lineas de texto de cada uno que se le pida sin perderse.
+**Bonus:**
+
+must be able to handle several file descriptors.
